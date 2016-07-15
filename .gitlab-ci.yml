@@ -9,7 +9,7 @@ deploy_ui_to_staging:
   services:
        - docker:dind
   script:
-    - npm run mongo:docker:build:dev
-    - npm run mongo:docker:push:dev
+    - docker build -t registry.gitlab.com/reallybigtree/pinecone-mongo
+    - docker push registry.gitlab.com/reallybigtree/pinecone-mongo
   only:
     - develop
