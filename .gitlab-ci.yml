@@ -1,13 +1,7 @@
-image: docker:git
-
-stages:
-  - deploy
-
-deploy_ui_to_staging:
-  stage: deploy
-  environment: Staging
+build_image:
+  image: docker:git
   services:
-       - docker:dind
+  - docker:dind
   script:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.example.com
     - docker build -t registry.gitlab.com/reallybigtree/pinecone-mongo .
