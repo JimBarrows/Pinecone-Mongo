@@ -1,0 +1,16 @@
+image: docker:git
+
+stages:
+  - deploy
+
+deploy_ui_to_staging:
+  stage: deploy
+  environment: Development
+  services:
+       - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN gitlab.com:5005
+    - npm run mongo:docker:build:dev
+    - npm run mongo:docker:push:dev
+  only:
+    - develop

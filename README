@@ -1,0 +1,6 @@
+In order to build a new image for dev:
+npm run mongo:docker:build:dev
+npm run mongo:docker:push:dev
+
+In order to run locally:
+npm run mongo:docker:run:dev
