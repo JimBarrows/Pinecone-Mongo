@@ -4,7 +4,9 @@
   "description" : "The mongo database for pinceone",
   "private" : true,
   "scripts" : {
-	"mongo:docker:run:dev" : "docker run --detach --name pinecone-mongo -p 27017:27017 registry.gitlab.com/reallybigtree/pinecone-mongo",
+	"mongo:docker:network:create": "docker network create pinecone-mongo-cluster",
+	"mongo:docker:run:dev1" : "docker run --detach --net pinecone-mongo-cluster --name pinecone-mongo-1 -p 27017:27017 registry.gitlab.com/reallybigtree/pinecone-mongo mongod --replSet pinecone-set",
+	"mongo:docker:run:dev2" : "docker run --detach --net pinecone-mongo-cluster --name pinecone-mongo-2 -p 27018:27017 registry.gitlab.com/reallybigtree/pinecone-mongo mongod --replSet pinecone-set",
 	"mongo:docker:push:dev" : "docker push registry.gitlab.com/reallybigtree/pinecone-mongo",
 	"mongo:docker:build:dev" : "docker build -t registry.gitlab.com/reallybigtree/pinecone-mongo ."
   }
