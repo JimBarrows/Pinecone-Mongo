@@ -1,13 +1,27 @@
 {
-  "name" : "pinecone-mongo",
-  "version" : "1.0.0",
-  "description" : "The mongo database for pinceone",
-  "private" : true,
-  "scripts" : {
-	"mongo:docker:network:create": "docker network create pinecone-mongo-cluster",
-	"mongo:docker:run:dev1" : "docker run --detach --net pinecone-mongo-cluster --name pinecone-mongo-1 -p 27017:27017 registry.gitlab.com/reallybigtree/pinecone-mongo mongod --replSet pinecone-set",
-	"mongo:docker:run:dev2" : "docker run --detach --net pinecone-mongo-cluster --name pinecone-mongo-2 -p 27018:27017 registry.gitlab.com/reallybigtree/pinecone-mongo mongod --replSet pinecone-set",
-	"mongo:docker:push:dev" : "docker push registry.gitlab.com/reallybigtree/pinecone-mongo",
-	"mongo:docker:build:dev" : "docker build -t registry.gitlab.com/reallybigtree/pinecone-mongo ."
+  "name": "pinecone-mongo",
+  "version": "1.0.0",
+  "description": "The mongo database for pinceone",
+  "bugs": {
+    "url": "https://github.com/JimBarrows/Pinecone-Mongo/issues"
+  },
+  "scripts": {
+    "docker:network:create": "docker network create pinecone-mongo-cluster",
+    "docker:run:dev1": "docker run --detach --net pinecone-mongo-cluster --name pinecone-mongo-1 -p 27017:27017 registry.gitlab.com/reallybigtree/pinecone-mongo mongod --replSet pinecone-set",
+    "docker:run:dev2": "docker run --detach --net pinecone-mongo-cluster --name pinecone-mongo-2 -p 27018:27017 registry.gitlab.com/reallybigtree/pinecone-mongo mongod --replSet pinecone-set",
+    "docker:push:dev": "docker push registry.gitlab.com/reallybigtree/pinecone-mongo",
+    "docker:build:dev": "docker build -t registry.gitlab.com/reallybigtree/pinecone-mongo ."
+  },
+
+  "author": {
+    "name": "Jim Barrows",
+    "email": "Jim.Barrows@gmail.com"
+  },
+  "contributors": [],
+  "license": "Apache 2.0",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:JimBarrows/Pinecone-Mongo.git"
   }
 }
