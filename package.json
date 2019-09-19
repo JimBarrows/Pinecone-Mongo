@@ -7,10 +7,11 @@
   },
   "scripts": {
     "docker:network:create": "docker network create pinecone-mongo-cluster",
-    "docker:run:dev1": "docker run --detach --net pinecone-mongo-cluster --name pinecone-mongo-1 -p 27017:27017 registry.gitlab.com/reallybigtree/pinecone-mongo mongod --replSet pinecone-set",
-    "docker:run:dev2": "docker run --detach --net pinecone-mongo-cluster --name pinecone-mongo-2 -p 27018:27017 registry.gitlab.com/reallybigtree/pinecone-mongo mongod --replSet pinecone-set",
-    "docker:push:dev": "docker push registry.gitlab.com/reallybigtree/pinecone-mongo",
-    "docker:build:dev": "docker build -t registry.gitlab.com/reallybigtree/pinecone-mongo ."
+    "docker:run:dev1": "docker run --detach --net pinecone-mongo-cluster --name pinecone-mongo-1 -p 27017:27017 pinecone/mongo mongod --replSet pinecone-set",
+    "docker:run:dev2": "docker run --detach --net pinecone-mongo-cluster --name pinecone-mongo-2 -p 27018:27017 pinecone/mongo mongod --replSet pinecone-set",
+    "run": "npm run docker:network:create; npm run docker:run:dev1; npm run docker:run:dev2",
+    "stop": "docker stop pinecone-mongo-1 pinecone-mongo-2; docker network rm pinecone-mongo-cluster",
+    "docker:build": "docker build -t pinecone/mongo ."
   },
 
   "author": {
